@@ -2,34 +2,35 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 
-const SinglePlayer = () => {
-    const { id } = useParams(); 
-    const [player, setPlayer] = useState(null);
-  
+const SinglePlayer = ({singlePuppyId, setSinglePuppy}) => {
+  const [error, setError] = useState(""); 
+
     useEffect(() => {
         async function fetchSinglePlayer() {
             try {
-                const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2109-UNF-HY-WEB-PT/players/1");
-                const result= await response.json()
-                setPlayer(result.data)
+                if (singlePuppyId) {
+                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2306-ghp-et-web-pt-sf/players/${singlePuppyId.id}`);
+                const result = await response.json()
+                console.log(result)
+                console.log(singlePuppyId)
+                setSinglePuppy(result.data.player)
+                }
 
-            }catch(error) {
-                console.error(error)
+            } catch (e) {
+                console.error(e)
+                setError(e.message)
             }
         }
         fetchSinglePlayer();
-    }, [id])
+    }, [])
 
-    if (!player) {
-        return <div>Loading...</div>
-    }
     
     return (
         <>
-        <h2>{player.name}</h2>
-        <h4>{player.imageUrl}</h4>
-        <h4>{player.breed}</h4>
-        <h4>{player.status}</h4>
+        <h2>{singlePuppyId.name}</h2>
+        <img src={singlePuppyId.imageUrl} alt={singlePuppyId.name}/>
+        <h4>Breed={singlePuppyId.breed}</h4>
+        <h4>Status={singlePuppyId.status}</h4>
         </>
     )
 

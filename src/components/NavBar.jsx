@@ -6,7 +6,7 @@ const NavBar = () => {
         <>
         <div id="navbar">
             <Link to="/">All Players</Link>
-            {/* <Link to="/players/:id">Single Player</Link> */}
+            <Link to="/players/:id">Single Player</Link>
         </div>
         
         </>
