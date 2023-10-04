@@ -1,36 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-import {Routes, Route, Link} from "react-router-dom"
-import AllPlayers from "./components/AllPlayers"
+import {Routes, Route} from "react-router-dom"
 import SinglePlayer from './components/SinglePlayer'
-import SearchBar from './components/SearchBar'
+import Home from './components/Home'
+
 
 function App() {
-  const [puppyList, setPuppyList] = useState(null);
-  const [singlePuppyId, setSinglePuppy] = useState(null)
 
   return (
     <>
-    <SearchBar/>
-      <h1>Puppy Bowl</h1>
-      <div>
-
-        <AllPlayers 
-        puppyList={puppyList}
-        setPuppyList={setPuppyList}
-        setSinglePuppy={setSinglePuppy}
-        />
-
-
-        {singlePuppyId && (
-            <SinglePlayer 
-            singlePuppyId={singlePuppyId}
-            setSinglePuppy={setSinglePuppy}
-            />
-        )}
-
-
-      </div>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/players/:id' element={<SinglePlayer />} />
+    </Routes>
     </>
   )
 }

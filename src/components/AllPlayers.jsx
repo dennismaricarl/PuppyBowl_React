@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button'
-
+import {useNavigate} from 'react-router-dom';
 import '../App.css';
 
-const AllPlayers = ({puppyList, setPuppyList, setSinglePuppy}) => {
-const [error, setError] = useState(" ");
+const AllPlayers = () => {
+
+    const [puppyList, setPuppyList] = useState([]);
+    const [error, setError] = useState(" ");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function FetchAllPlayers() {
@@ -24,13 +25,13 @@ const [error, setError] = useState(" ");
 
 return (
     <>
+    
     {puppyList ? (
   puppyList.map((player) => (
     <div key={player.id}>
       <h2>{player.name}</h2>
       <img src={player.imageUrl} alt={player.name} width="200"/>
-      <button onClick={() => setSinglePuppy(player)}> See Details</button>
-    <Link to={`/players/${player.id}`}>See Details</Link>
+      <button onClick={() => navigate(`/players/${player.id}`)}>See details</button>
     </div>
     
   ))
