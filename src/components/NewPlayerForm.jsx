@@ -1,10 +1,10 @@
 import {useState} from 'react';
+import { createNewPlayer } from './API';
 
-const NewPlayerForm = () => {
-    const[puppyName, setPuppyName] = useState("");
+const NewPlayerForm = ({puppyList, setPuppyList}) => {
+    const[name, setPuppyName] = useState("");
     const[breed, setBreed] = useState("");
-    const[status, setStatus] = useState("");
-    const[error, setError] = useState("")
+    const[error, setError] = useState(null)
 
   function resetForm() {
         setPuppyName("");
@@ -14,36 +14,37 @@ const NewPlayerForm = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        const apiData = await createNewPlayer(name, breed);
+      console.log('apiData:', apiData)
+        if(apiData.success) { 
+    console.log('SUCCESS')
+        
+            console.log("new player:", apiData.data.newPlayer)
+         
+            console.log("puppyList:", puppyList)
+            const newPlayerList =[...puppyList, apiData.data.newPlayer]
+            setPuppyList(newPlayerList)
 
-        if (!error) {
-        try{
-            const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2306-GHP-ET-WEB-PT-SF/players", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({puppyName, breed, status})
-            })
-            const result = await response.json();
-            console.log(result.data.player)
+            setPuppyName("");
+            setBreed("");
+            console.log('logging uState')
+            console.log(name,breed)
 
-        } catch(error){
-            setError(error.message);
+        } else {
+            setError(apiData.error)
         }
-}
     }
-
-
     return (
     <>
-    <form method="POST" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+        {error && <p>{error}</p>}
     <h2>New Puppy Form</h2>
 
     <div>
         <label>
             Name:
             <input
-                value={puppyName}
+                value={name}
                 onChange={(e)=> setPuppyName(e.target.value)}
             />
         </label>
@@ -60,16 +61,6 @@ const NewPlayerForm = () => {
         </label>
     </div>  
         <br/>
-
-    <div>
-        <label>
-            Status: 
-            <input
-                value={status}
-                onChange={(e)=>setStatus(e.target.value)}
-            />
-        </label>
-    </div>
 
         <button type="Submit">Submit</button>
         <button type="reset" onClick={resetForm}>Reset</button>

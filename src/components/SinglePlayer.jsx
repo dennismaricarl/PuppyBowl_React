@@ -1,29 +1,40 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { deletePlayer } from './API';
+import {useNavigate} from 'react-router-dom'
+import { fetchSinglePlayer } from './API';
 
 
 const SinglePlayer = () => {
   const [error, setError] = useState(""); 
   const [singlePup, setSinglePup] = useState(null);
+  const navigate = useNavigate()
 
    const {id}= useParams()
 
-    useEffect(() => {
-        async function fetchSinglePlayer() {
-            try {
-                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2306-ghp-et-web-pt-sf/players/${id}`);
-                const result = await response.json()
-                console.log(result)
-                setSinglePup(result.data.player)
-
-            } catch (e) {
-                console.error(e)
-                setError(e.message)
-            }
+   useEffect(()=> {
+    async function getSinglePlayer() {
+        const APIresponse = await fetchSinglePlayer(id)
+        console.log(APIresponse)
+        if (APIresponse.success) {
+            setSinglePup(APIresponse.data.player)
+        } else {
+            setError(error.message)
         }
-        fetchSinglePlayer();
-    }, [])
+    }
+    getSinglePlayer();
+   }, [])
 
+
+    async function handleDelete() {
+        try {
+          const result = await deletePlayer(singlePup.id)
+          console.log(result)
+          navigate("/")
+        } catch(error){
+            console.error(error);
+        }
+    }
     
     return (
         <>
@@ -37,7 +48,9 @@ const SinglePlayer = () => {
         </>
     ) :(
          <p>Loading...</p>
-    )}
+         
+    )}  
+    <button onClick={handleDelete}>Delete Puppy</button>
     </>
     )
 }
