@@ -24,14 +24,14 @@ export async function fetchSinglePlayer(id) {
 }
 
 
-export async function createNewPlayer (name,breed) {
+export async function createNewPlayer (name,breed,imageUrl) {
        try {
         const response = await fetch(`${URL}/players`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name, breed})
+            body: JSON.stringify({name, breed, imageUrl})
         })
         const result = await response.json();
         console.log(result)
