@@ -6,10 +6,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
 import PetsRounded from '@mui/icons-material/PetsRounded';
-import Home from './Home';
 
 
-const NewPlayerForm = ({puppyList, setPuppyList}) => {
+const NewPlayerForm = () => {
     const[name, setPuppyName] = useState("");
     const[breed, setBreed] = useState("");
     const[imageUrl, setimageUrl] = useState("");
@@ -31,9 +30,6 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
         console.log('SUCCESS')
         
             console.log("new player:", apiData.data.newPlayer)
-            // const newPlayerList =[...puppyList, apiData.data.newPlayer]
-            // setPuppyList(newPlayerList)
-            // console.log(newPlayerList)
 
             setPuppyName("");
             setBreed("");

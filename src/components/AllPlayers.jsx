@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../App.css';
 import TextField from '@mui/material/TextField';
-import { fetchAllPlayers } from './API';
-import NewPlayerForm from './NewPlayerForm';
+import { fetchAllPlayers} from './API';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
 
 import {
   Card,
   CardMedia,
-  Grid,
-  Box
- 
+  Grid, 
 } from "@mui/material";
 
 
@@ -43,7 +41,6 @@ const AllPlayers = () => {
     ) : puppyList;
 
 
-    
 
 return (
     <>
