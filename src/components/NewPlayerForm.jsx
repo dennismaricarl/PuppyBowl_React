@@ -1,9 +1,12 @@
 import {useState} from 'react';
 import { createNewPlayer } from './API';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
+import PetsRounded from '@mui/icons-material/PetsRounded';
+import Home from './Home';
 
 
 const NewPlayerForm = ({puppyList, setPuppyList}) => {
@@ -11,6 +14,7 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
     const[breed, setBreed] = useState("");
     const[imageUrl, setimageUrl] = useState("");
     const[error, setError] = useState(null)
+    const navigate = useNavigate();
 
   function resetForm() {
         setPuppyName("");
@@ -22,20 +26,19 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
     async function handleSubmit(e) {
         e.preventDefault();
         const apiData = await createNewPlayer(name, breed, imageUrl);
-      console.log('apiData:', apiData)
+
         if(apiData.success) { 
-    console.log('SUCCESS')
+        console.log('SUCCESS')
         
             console.log("new player:", apiData.data.newPlayer)
-         
-            console.log("puppyList:", puppyList)
-            const newPlayerList =[apiData.data.newPlayer, ...puppyList,]
-            setPuppyList(newPlayerList)
+            // const newPlayerList =[...puppyList, apiData.data.newPlayer]
+            // setPuppyList(newPlayerList)
+            // console.log(newPlayerList)
 
             setPuppyName("");
             setBreed("");
             setimageUrl("");
-            console.log(name,breed,imageUrl)
+            navigate('/')
 
         } else {
             setError(apiData.error)
@@ -43,10 +46,15 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
     }
     return (
     <>
+    <Button
+        variant='contained'
+        sx={{ mb: 8, fontSize:"small"}}
+        onClick={() => navigate('/')}
+    >Return To HomePage</Button>
     <Box
         sx={{
           width: 500,
-          border: "1px solid #F3EEEA",
+          border: "2px solid gray",
           padding: 10,
           borderRadius: 10,
         }}
@@ -56,9 +64,9 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
             <Typography
             fontFamily="monospace"
             variant="h6"
-            align="left"
+            align="center"
             gutterBottom>
-            Create a new puppy 
+            Add a new puppy <PetsRounded fontSize='small'/>
             </Typography>
             <form onSubmit={handleSubmit}>
             <TextField
@@ -79,7 +87,6 @@ const NewPlayerForm = ({puppyList, setPuppyList}) => {
           />
           <br/>
           <TextField
-            required
             value={imageUrl}
             label="imageUrl"
             onChange={(e)=> setimageUrl(e.target.value)}
