@@ -1,9 +1,17 @@
+# The Puppy Bowl
+
 # Deployed Site
 https://65a7469bd410ec5cb967f058--lucky-conkies-a4a0d9.netlify.app/
 
 
+The Puppy Bowl is an existing project with an incomplete front end. I built the functional client-side using existing API and successfully rendered a puppy bowl roster where users can view all puppies, observe puppy details, add and remove puppies. 
 
+API:  https://fsa-puppy-bowl.herokuapp.com/api/
 
+# Tools and Technologies: 
+React, React-Router, Vite, CSS. 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
