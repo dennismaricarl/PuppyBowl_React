@@ -1,5 +1,4 @@
 import AllPlayers from "./AllPlayers";
-import NewPlayerForm from "./NewPlayerForm";
 import { Typography } from "@mui/material/";
 import PetsRoundedIcon from "@mui/icons-material/PetsRounded";
 
