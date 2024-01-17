@@ -9,11 +9,10 @@ API:  https://fsa-puppy-bowl.herokuapp.com/api/
 
 </div>
 
-### Tools and Technologies: 
-React, React-Router, Vite, CSS. 
+#### Tools and Technologies: React, React-Router, Vite, CSS. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-# React + Vite
+#####  React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
