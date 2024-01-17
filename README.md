@@ -1,6 +1,6 @@
 # The Puppy Bowl
 
-# Deployed Site
+<h2>Deployed Site</h2>
 https://65a7469bd410ec5cb967f058--lucky-conkies-a4a0d9.netlify.app/
 
 
@@ -8,7 +8,7 @@ The Puppy Bowl is an existing project with an incomplete front end. I built the
 
 API:  https://fsa-puppy-bowl.herokuapp.com/api/
 
-# Tools and Technologies: 
+## Tools and Technologies: 
 React, React-Router, Vite, CSS. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
