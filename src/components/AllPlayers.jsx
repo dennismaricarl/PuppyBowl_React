@@ -33,23 +33,25 @@ const AllPlayers = () => {
     : puppyList;
 
   return (
-    <>
+    <div style={{width: "80vw"}}>
       <div>
+      <Button
+          variant="contained"
+          sx={{ position: "absolute", top: 50, right: 50 }}
+          onClick={() => navigate("./NewPlayerForm")}
+        >
+          <Typography fontSize={15}>
+           Add New Player
+          </Typography>
+        </Button>
+
         <TextField
           onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
           label="Search"
           placeholder="Puppy Name"
-          sx={{ mb: 8, minHeight: "40px", width: "80%" }}
+          sx={{ mb: 8, mt: 2, minHeight: "40px", width: "80%"}}
+    
         />
-        <Button
-          variant="contained"
-          sx={{ bgcolor: "bluegreen", mb: 8 }}
-          onClick={() => navigate("./NewPlayerForm")}
-        >
-          <Typography fontFamily={"monospace"} fontsize={40}>
-            Want to add a new Puppy? Click here!{" "}
-          </Typography>
-        </Button>
       </div>
 
       <Grid container spacing={2}>
@@ -86,7 +88,7 @@ const AllPlayers = () => {
           <p>Loading...</p>
         )}
       </Grid>
-    </>
+    </div>
   );
 };
 

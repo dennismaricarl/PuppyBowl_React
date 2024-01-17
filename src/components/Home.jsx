@@ -5,11 +5,11 @@ import PetsRoundedIcon from "@mui/icons-material/PetsRounded";
 const Home = () => {
   return (
     <>
-      <PetsRoundedIcon />
-
-      <Typography fontFamily="Georgia" fontSize={60} fontWeight="bold">
+      <PetsRoundedIcon fontSize="large"/>
+      <Typography fontFamily="Georgia" fontSize={60} fontWeight="bold" textAlign="center" >
         Puppy Bowl
       </Typography>
+      <Typography fontFamily="monospace">a roster of cute puppies ready to compete</Typography>
       <AllPlayers />
     </>
   );

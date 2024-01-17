@@ -42,7 +42,7 @@ const NewPlayerForm = () => {
     <>
       <Button
         variant="contained"
-        sx={{ mb: 8, fontSize: "small" }}
+        sx={{fontSize: "small", position: "absolute", top:20, left: 90}}
         onClick={() => navigate("/")}
       >
         Return To HomePage
