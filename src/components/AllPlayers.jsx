@@ -47,9 +47,8 @@ const AllPlayers = () => {
 
         <TextField
           onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
-          label="Search"
-          placeholder="Puppy Name"
-          sx={{ mb: 8, mt: 2, minHeight: "40px", width: "80%"}}
+          placeholder="search puppy name here"
+          sx={{ mb: 8, mt: 2, minHeight: "40px", width: "80%", background:"white", borderRadius:"5px"}}
     
         />
       </div>

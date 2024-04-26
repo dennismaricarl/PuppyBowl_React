@@ -50,8 +50,8 @@ const NewPlayerForm = () => {
       <Box
         sx={{
           width: 500,
-          border: "2px solid gray",
-          padding: 10,
+          border: "3px solid white",
+          padding: 12,
           borderRadius: 10,
         }}
       >
@@ -67,16 +67,20 @@ const NewPlayerForm = () => {
           </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
-              required
+              sx={{background:"white", borderRadius:"5px"}}
               label="Name"
+              required
+              placeholder="Enter puppy name"
               value={name}
               onChange={(e) => setPuppyName(e.target.value)}
               fullWidth
             />
             <br />
             <TextField
+              sx={{background:"white", borderRadius:"5px"}}
               required
               label="Breed"
+              placeholder="Enter breed"
               value={breed}
               onChange={(e) => setBreed(e.target.value)}
               fullWidth
@@ -84,6 +88,7 @@ const NewPlayerForm = () => {
             />
             <br />
             <TextField
+              sx={{background:"white", borderRadius:"5px"}}
               value={imageUrl}
               label="imageUrl"
               onChange={(e) => setimageUrl(e.target.value)}
